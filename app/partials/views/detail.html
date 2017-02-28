@@ -1,18 +1,21 @@
 <!-- * * * * * * Dish detail view {Dish detail page} * * * * * * -->
 <!--detailed info of a dish on the right-->
-<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); max-height:750px; overflow: auto;">
+<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); max-height:750px; overflow: auto;" ng-hide="loading">
 	<!--thumbnail-->
-	<div class="col-md-6 panel-group">
+	<div class="col-md-6 panel-group" >
 		<div class="col-md-12 panel-header">
 			<h4 id="dishName">
 				<!-- Where the dish name locates.  -->
+				{{currentDish.title}}
 			</h4>
 		</div>
 		<div id="dishImage" class="col-md-12 panel-body">
 			<!-- Where the dish image locates.  -->
+			<img ng-src="{{currentDish.image}}" class="img-responsive" style="width:100%; height:350px"/>
 		</div>
 		<div id="dishSummary" class="col-md-12 panel-body">
 			<!-- Where the dish description locates.  -->
+			{{currentDish.instructions}}
 		</div>
 		<div class="col-md-12 panel-body">
 			<!-- Button here to go back to dish searching page. -->
@@ -31,13 +34,23 @@
 				<thead>
 					<tr>
 						<th class="col-md-4"></th>
-						<th class="col-md-5"></th>
-						<th class="col-md-1"></th>
+						<th class="col-md-6"></th>
 						<th class="col-md-2"></th>
 					</tr>
 				</thead>
-				<tbody id="dishIngredients">
+				<tbody id="dishIngredients" >
 					<!-- Where the dish ingredients locate.  -->
+					<tr ng-repeat="ing in currentDish.extendedIngredients">
+						<td>
+							{{ing.amount * getNumberOfGuests()}} {{ing.unit}}
+						</td>
+						<td>
+							{{ing.name}}
+						</td>
+						<td style="text-align: right">
+							{{ing.amount * getNumberOfGuests()}} SEK
+						</td>
+					</tr>
 				</tbody>
 			</table>
 		</div>
@@ -55,7 +68,9 @@
 					<tr>
 						<td>
 							<!-- Button here to add the dish into the menu. -->
-							<button id="setDishButton" type="button" class="btn btn-warning"></button>
+							<button id="setDishButton" type="button" class="btn btn-warning">
+
+							</button>
 						</td>
 						<td>SEK</td>
 						<td id="dishPrice">
@@ -68,9 +83,4 @@
 		</div>
 	</div>
 
-	<!-- Preparation -->
-	<div class="col-md-12 panel-body ">
-		<div class="col-md-12 panel-header"><h4>PREPARATION</h4></div>
-		<div id="dishPreparation" class="panel-body"></div>
-	</div>
 </div>
