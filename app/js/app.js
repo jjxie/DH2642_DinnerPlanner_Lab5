@@ -43,8 +43,7 @@ dinnerPlannerApp.config(['$routeProvider',
       when('/search', {
         templateUrl: 'partials/searchPartial.html',
       }).
-      when('/details', {
-        //'/details/:dishId'
+      when('/details/:id', {
         templateUrl: 'partials/detailPartial.html',
       }).
       when('/overview', {

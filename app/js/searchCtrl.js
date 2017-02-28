@@ -25,12 +25,15 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
         {id:'side dish', name:'Side dish'},
         {id:'soup', name:'Soup'}
     ];
-
-    $scope.searchDish = function(filter, type){
-        $scope.dishes = Dinner.SearchDish.get({query:filter,type:type});
+    $scope.dishes = '';
+    $scope.searchDish = function(query,type) {
+        $scope.status = "Searching...";
+        Dinner.SearchDish.get({query:query,type:type},function(data){
+            $scope.dishes = data.results;
+            $scope.status = "Showing " + data.results.length + " results";
+        },function(data){
+            $scope.status = "There was an error";
+        });
     }
-    $scope.d = function(){
-        console.log($scope.search.filter);
-        console.log($scope.search.type);
-    }
+    $scope.searchDish($scope.search.filter, $scope.search.type);
 });

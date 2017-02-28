@@ -8,4 +8,14 @@ dinnerPlannerApp.controller('DetailCtrl', function ($scope,$routeParams,Dinner) 
     $scope.getNumberOfGuests = function() {
         return Dinner.getNumberOfGuests();
     }
+    $scope.loading = true;
+    $scope.currentDish = '';
+
+    Dinner.GetDish.get({id:$routeParams.id},function(data){
+        $scope.loading = false;
+        $scope.currentDish = data;
+    },function(data){
+        $scope.status = "There was an error";
+    });
+
 });
