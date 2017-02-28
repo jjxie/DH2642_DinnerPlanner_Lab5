@@ -20,7 +20,7 @@ this with Total price of the menu -->
 					<span class="glyphicon glyphicon-minus"></span>
 				</button>
 			</span>
-			<input id="guestNumberInput" type="text" class="form-control input-number" min="0" max="100" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<input id="guestNumberInput" type="number" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)" class="form-control input-number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 			<span class="input-group-btn">
 				<button id="plusGuestButton" type="button" class="btn btn-warning btn-number">
 					<span class="glyphicon glyphicon-plus"></span>
