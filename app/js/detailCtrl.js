@@ -8,14 +8,36 @@ dinnerPlannerApp.controller('DetailCtrl', function ($scope,$routeParams,Dinner) 
     $scope.getNumberOfGuests = function() {
         return Dinner.getNumberOfGuests();
     }
-    $scope.loading = true;
+
     $scope.currentDish = '';
 
+    //API calling
+    $scope.isLoading = true;
+    $scope.isError = false;
+
     Dinner.GetDish.get({id:$routeParams.id},function(data){
-        $scope.loading = false;
+        $scope.isLoading = false;
         $scope.currentDish = data;
+        Dinner.setCurrentDish(data);
+        console.log(Dinner.getCurrentDish());
     },function(data){
-        $scope.status = "There was an error";
+        $scope.isLoading = false;
+        $scope.isError = true;
     });
 
+    // Add/remove dish button functioning
+    $scope.buttonLabel = Dinner.isOnMenu($routeParams.id) ? "Remove this dish" : "Add this dish";
+    $scope.buttonAction = function(){
+        if(Dinner.isOnMenu($routeParams.id)){
+            Dinner.removeDish($routeParams.id);
+        }
+        else{
+            Dinner.addDish($routeParams.id);
+        }
+        $scope.buttonLabel = Dinner.isOnMenu($routeParams.id) ? "Remove this dish" : "Add this dish";
+    }
+
+    $scope.getCurrentPrice = function(){
+        return Dinner.getCurrentDish().price * Dinner.getNumberOfGuests();
+    }
 });
