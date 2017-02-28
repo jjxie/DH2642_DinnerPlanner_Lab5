@@ -5,29 +5,38 @@
 		<h4>Select Dishes</h4>
 	</div>
 	<div id="searchPanel">
+		<form class="col-md-4 panel-body" name="filterField" ng-submit="filterField.$valid && setFilter(input)" >
+			<input type="text" placeholder="Enter key words to search" ng-model="search.filter">
+		</form>
+
 		<div class="col-md-4 panel-body">
-			<input id="filterKeyword" class="form-control" type="text" placeholder="Enter key words to search">
-		</div>
-		<div class="col-md-4 panel-body"><button id="searchButton" type="button" class="btn btn-default">Search</button>
+			<button type="button" class="btn btn-default" ng-click="d()">Search</button>
 		</div>
 	</div>
 	<div class="col-md-4 panel-body">
+		<!--
 		<select id="searchType" class="form-control">
-			<option value="all">All</option>
-			<option value="appetizer">Appetizer</option>
-			<option value="beverage">Beverage</option>
-			<option value="bread">Bread</option>
-			<option value="breakfast">Breakfast</option>
-			<option value="dessert">Dessert</option>
-			<option value="drink">Drink</option>
-			<option value="main course">Main course</option>
-			<option value="salad">Salad</option>
-			<option value="sauce">Sauce</option>
-			<option value="side dish">Side dish</option>
-			<option value="soup">Soup</option>
-		</select>
-	</div>
-	<div id="menu" class="row" style="overflow: auto; max-height: 625px; width: 100%; ">
-		<!-- Where the search results locates. -->
-	</div>
+		<option value="all">All</option>
+		<option value="appetizer">Appetizer</option>
+		<option value="beverage">Beverage</option>
+		<option value="bread">Bread</option>
+		<option value="breakfast">Breakfast</option>
+		<option value="dessert">Dessert</option>
+		<option value="drink">Drink</option>
+		<option value="main course">Main course</option>
+		<option value="salad">Salad</option>
+		<option value="sauce">Sauce</option>
+		<option value="side dish">Side dish</option>
+		<option value="soup">Soup</option>
+	</select>
+-->
+<select ng-model="search.type"  name="typeField">
+	<option ng-repeat="t in types" value="{{t.id}}">
+		{{t.name}}
+	</option>
+</select>
+</div>
+<div id="menu" class="row" style="overflow: auto; max-height: 625px; width: 100%; ">
+	<!-- Where the search results locates. -->
+</div>
 </div>

@@ -42,20 +42,16 @@ dinnerPlannerApp.config(['$routeProvider',
       }).
       when('/search', {
         templateUrl: 'partials/searchPartial.html',
-        controller: 'SearchCtrl'
       }).
       when('/details', {
         //'/details/:dishId'
         templateUrl: 'partials/detailPartial.html',
-        controller: 'DishCtrl'
       }).
       when('/overview', {
         templateUrl: 'partials/overviewPartial.html',
-        controller: 'DishCtrl'
       }).
       when('/preparation', {
         templateUrl: 'partials/preparationPartial.html',
-        controller: 'DishCtrl'
       }).
       // TODO in Lab 5: add more conditions for the last two screens (overview and preparation)
       otherwise({
