@@ -27,12 +27,14 @@ dinnerPlannerApp.controller('SearchCtrl', function ($scope,Dinner) {
     ];
     $scope.dishes = '';
     $scope.searchDish = function(query,type) {
-        $scope.status = "Searching...";
+        $scope.isLoading = true;
+        $scope.isError = false;
         Dinner.SearchDish.get({query:query,type:type},function(data){
             $scope.dishes = data.results;
-            $scope.status = "Showing " + data.results.length + " results";
+            $scope.isLoading = false;
         },function(data){
-            $scope.status = "There was an error";
+            $scope.isLoading = false;
+            $scope.isError = true;
         });
     }
     $scope.searchDish($scope.search.filter, $scope.search.type);

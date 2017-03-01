@@ -16,13 +16,13 @@ this with Total price of the menu -->
 
 		<div class="input-group" style="width: 160px; margin: auto;">
 			<span class="input-group-btn">
-				<button id="minusGuestButton" type="button" class="btn btn-warning btn-number" >
+				<button id="minusGuestButton" type="button" class="btn btn-warning btn-number" ng-click="minusNumberOfGuests()">
 					<span class="glyphicon glyphicon-minus"></span>
 				</button>
 			</span>
 			<input id="guestNumberInput" type="number" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)" class="form-control input-number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 			<span class="input-group-btn">
-				<button id="plusGuestButton" type="button" class="btn btn-warning btn-number">
+				<button id="plusGuestButton" type="button" class="btn btn-warning btn-number" ng-click="plusNumberOfGuests()">
 					<span class="glyphicon glyphicon-plus"></span>
 				</button>
 			</span>
@@ -39,6 +39,14 @@ this with Total price of the menu -->
 			</thead>
 			<tbody>
 				<!-- Where the menu list locates. -->
+				<tr ng-repeat="dish in selectedMenu">
+					<td>
+						{{dish.title}}
+					</td>
+					<td>
+						{{dish.price * getNumberOfGuests()}}
+					</td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
@@ -56,6 +64,7 @@ this with Total price of the menu -->
 					<td style="text-align: right;">SEK</td>
 					<td id="totalMenuPrice">
 						<!-- Where the total price locates. -->
+						{{getTotalCost()}}
 					</td>
 				</tr>
 			</tbody>
@@ -63,6 +72,6 @@ this with Total price of the menu -->
 	</div>
 	<div class="container-fluid">
 		<!-- Button here to confirm the dinner menu. -->
-		<button id="confirmDinnerButton" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</button>
+		<a id="confirmDinnerButton" href="#/overview" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</a>
 	</div>
 </div>

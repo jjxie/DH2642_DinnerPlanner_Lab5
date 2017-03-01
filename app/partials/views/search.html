@@ -1,11 +1,19 @@
 <!-- * * * * * * Search view {Select menu page} * * * * * * -->
 <!--Thumbnails of dishes on the right-->
-<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); max-height: 750px;">
+<div class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); height = 750px;" ng-hide="!isLoading">
+	<div style="text-align:center; font-size:xx-large">
+		<br />
+		<img src="loader.gif"/>
+		<br />
+		Loading......
+	</div>
+</div>
+<div id="menuThumbnailView" class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); max-height: 750px;" ng-hide="isLoading">
 	<div class="col-md-12 panel-header">
 		<h4>Select Dishes</h4>
 	</div>
 	<div id="searchPanel">
-		<form class="col-md-4 panel-body" name="filterField" ng-submit="filterField.$valid && setFilter(input) && searchDish(search.filter, search.type)" >
+		<form class="col-md-4 panel-body" name="filterField" ng-submit="filterField.$valid && setFilter(input)" >
 			<input type="text" placeholder="Enter key words to search" ng-model="search.filter">
 		</form>
 
@@ -42,3 +50,4 @@
 			</button>
 		</div>
 	</div>
+</div>

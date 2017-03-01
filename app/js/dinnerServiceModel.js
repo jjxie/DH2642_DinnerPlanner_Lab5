@@ -6,6 +6,7 @@
 dinnerPlannerApp.factory('Dinner',function ($resource) {
     var that = this;
 
+    //Guests
     var numberOfGuests = 2;
 
     //Writes the number of guests
@@ -20,11 +21,66 @@ dinnerPlannerApp.factory('Dinner',function ($resource) {
         return numberOfGuests;
     }
 
-    // TODO in Lab 5: Add your model code from previous labs
-    // feel free to remove above example code
-    // you will need to modify the model (getDish and getAllDishes)
-    // a bit to take the advantage of Angular resource service
-    // check lab 5 instructions for details
+    //Current dish
+    var currentDish = {};
+
+    //Writes the current dish
+    this.setCurrentDish = function(data){
+        currentDish = {};
+        currentDish.id = data.id;
+        currentDish.title = data.title;
+        currentDish.image = data.image;
+        currentDish.price = 0;
+        for(ingredient = 0; ingredient < data.extendedIngredients.length; ingredient++){
+            currentDish.price += data.extendedIngredients[ingredient].amount;
+        }
+        currentDish.preparation = data.instructions;
+    }
+
+    this.getCurrentDish = function(){
+        return currentDish;
+    }
+
+
+    //Selected menu
+    var selectedMenu = [];
+
+    //Returns the selected menu
+    this.getSelectedMenu = function(){
+        return selectedMenu;
+    }
+    this.getTotalPrice = function(){
+        totalPrice = 0;
+        for(dishFlagK = 0; dishFlagK < selectedMenu.length; dishFlagK++){
+            totalPrice += selectedMenu[dishFlagK].price;
+        }
+        return totalPrice;
+    }
+
+    this.addDish = function(id){
+        if(id == currentDish.id){
+            selectedMenu.push(currentDish);
+        }
+    }
+
+    this.removeDish = function(id){
+        for(dishFlagI = 0; dishFlagI < selectedMenu.length; dishFlagI++){
+            if(id == selectedMenu[dishFlagI].id){
+                selectedMenu.splice(dishFlagI, 1);
+                break;
+            }
+        }
+    }
+    this.isOnMenu = function(id){
+        var is = false;
+        for(dishFlagJ = 0; dishFlagJ < selectedMenu.length; dishFlagJ++ ){
+            if(id == selectedMenu[dishFlagJ].id){
+                is = true;
+                break;
+            }
+        }
+        return is;
+    }
 
     // Angular service needs to return an object that has all the
     // methods created in it. You can consider that this is instead

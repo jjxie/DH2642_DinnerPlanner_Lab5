@@ -1,6 +1,14 @@
+<div class="col-md-9 panel-body panel-group" style="background-color: rgba(222,208,196,0.8); height = 750px;" ng-hide="!isLoading">
+	<div style="text-align:center; font-size:xx-large">
+		<br />
+		<img src="loader.gif"/>
+		<br />
+		Loading......
+	</div>
+</div>
 <!-- * * * * * * Dish detail view {Dish detail page} * * * * * * -->
 <!--detailed info of a dish on the right-->
-<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); max-height:750px; overflow: auto;" ng-hide="loading">
+<div id="dishDetailView" class="col-md-9 panel-group panel-body" style="background-color: rgba(222,208,196,0.8); max-height:750px; overflow: auto;" ng-hide="isLoading">
 	<!--thumbnail-->
 	<div class="col-md-6 panel-group" >
 		<div class="col-md-12 panel-header">
@@ -19,7 +27,7 @@
 		</div>
 		<div class="col-md-12 panel-body">
 			<!-- Button here to go back to dish searching page. -->
-			<button id="goBackButton" type="button" class="btn btn-warning">Back to Select Dish</button>
+			<a id="goBackButton" href="#/search" type="button" class="btn btn-warning">Back to Select Dish</a>
 		</div>
 	</div>
 
@@ -68,19 +76,18 @@
 					<tr>
 						<td>
 							<!-- Button here to add the dish into the menu. -->
-							<button id="setDishButton" type="button" class="btn btn-warning">
-
+							<button id="setDishButton" type="button" class="btn btn-warning" ng-click="buttonAction()">
+								{{buttonLabel}}
 							</button>
 						</td>
 						<td>SEK</td>
 						<td id="dishPrice">
 							<!-- Where the dish price locates.  -->
+							{{getCurrentPrice()}}
 						</td>
 					</tr>
 				</tbody>
-
 			</table>
 		</div>
 	</div>
-
 </div>

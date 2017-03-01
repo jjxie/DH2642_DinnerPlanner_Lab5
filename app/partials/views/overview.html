@@ -5,6 +5,19 @@
 	<!-- Menu summary -->
 	<div id="menuSummary" class="col-md-12 panel-body">
 		<!-- Where the menu summary locates. -->
+		<div class="col-md-3 panel-body" ng-repeat="dish in selectedMenu">
+			<div class="panel">
+				<div class="panel-body">
+					<img ng-src="{{dish.image}}" alt="dish.name" class="img-responsive" style="width:100%; height:200px"/>
+				</div>
+				<div class="tool panel-heading">
+					{{dish.title}}
+				</div>
+				<div class="panel-footer" style="text-align: right">
+					{{dish.price * numberOfGuests}} SEK
+				</div>
+			</div>
+		</div>
 	</div>
 	<!-- Total price -->
 	<div class="col-md-12 panel-body">
@@ -12,14 +25,14 @@
 			<span>Total: </span>
 			<span id="totalPrice">
 				<!-- Where the total price locates. -->
+				{{totalCost}} SEK
 			</span>
-			<span> SEK</span>
 		</div>
 	</div>
 
 	<div class="col-md-12 panel-body" style="text-align: center;">
 		<hr style="border: 1px solid #aaa;">
 		<!-- Button here to view the full preparation receipe. -->
-		<button id="fullRecipeButton" class="btn btn-warning" role="button" >Print Full Recipe</button>
+		<a id="fullRecipeButton" href="#/preparation" class="btn btn-warning" role="button" >Print Full Recipe</a>
 	</div>
 </div>
