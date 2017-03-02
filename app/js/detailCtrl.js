@@ -19,14 +19,16 @@ dinnerPlannerApp.controller('DetailCtrl', function ($scope,$routeParams,Dinner) 
         $scope.isLoading = false;
         $scope.currentDish = data;
         Dinner.setCurrentDish(data);
-        console.log(Dinner.getCurrentDish());
     },function(data){
         $scope.isLoading = false;
         $scope.isError = true;
     });
 
     // Add/remove dish button functioning
-    $scope.buttonLabel = Dinner.isOnMenu($routeParams.id) ? "Remove this dish" : "Add this dish";
+    $scope.getButtonLabel = function(){
+        return Dinner.isOnMenu($routeParams.id) ? "Remove this dish" : "Add this dish";
+    }
+
     $scope.buttonAction = function(){
         if(Dinner.isOnMenu($routeParams.id)){
             Dinner.removeDish($routeParams.id);
@@ -34,7 +36,6 @@ dinnerPlannerApp.controller('DetailCtrl', function ($scope,$routeParams,Dinner) 
         else{
             Dinner.addDish($routeParams.id);
         }
-        $scope.buttonLabel = Dinner.isOnMenu($routeParams.id) ? "Remove this dish" : "Add this dish";
     }
 
     $scope.getCurrentPrice = function(){

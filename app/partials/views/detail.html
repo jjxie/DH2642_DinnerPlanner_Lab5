@@ -27,7 +27,7 @@
 		</div>
 		<div class="col-md-12 panel-body">
 			<!-- Button here to go back to dish searching page. -->
-			<a id="goBackButton" href="#/search" type="button" class="btn btn-warning">Back to Select Dish</a>
+			<a id="goBackButton" href="#!/search" type="button" class="btn btn-warning">Back to Select Dish</a>
 		</div>
 	</div>
 
@@ -50,13 +50,13 @@
 					<!-- Where the dish ingredients locate.  -->
 					<tr ng-repeat="ing in currentDish.extendedIngredients">
 						<td>
-							{{ing.amount * getNumberOfGuests()}} {{ing.unit}}
+							{{(ing.amount * getNumberOfGuests()).toFixed(2)}} {{ing.unit}}
 						</td>
 						<td>
 							{{ing.name}}
 						</td>
 						<td style="text-align: right">
-							{{ing.amount * getNumberOfGuests()}} SEK
+							{{(ing.amount * getNumberOfGuests()).toFixed(2)}} SEK
 						</td>
 					</tr>
 				</tbody>
@@ -77,7 +77,7 @@
 						<td>
 							<!-- Button here to add the dish into the menu. -->
 							<button id="setDishButton" type="button" class="btn btn-warning" ng-click="buttonAction()">
-								{{buttonLabel}}
+								{{getButtonLabel()}}
 							</button>
 						</td>
 						<td>SEK</td>

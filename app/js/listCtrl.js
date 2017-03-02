@@ -14,14 +14,19 @@ dinnerPlannerApp.controller('ListCtrl', function ($scope,Dinner) {
 
     $scope.plusNumberOfGuests = function() {
         Dinner.setNumberOfGuests(Dinner.getNumberOfGuests() + 1);
+        $scope.numberOfGuests = Dinner.getNumberOfGuests();
     }
 
     $scope.minusNumberOfGuests = function() {
         Dinner.setNumberOfGuests(Dinner.getNumberOfGuests() - 1);
+        $scope.numberOfGuests = Dinner.getNumberOfGuests();
     }
 
     $scope.selectedMenu = Dinner.getSelectedMenu();
     $scope.getTotalCost = function(){
+        console.log(Dinner.getNumberOfGuests());
+        console.log(Dinner.getTotalPrice());
+        console.log(Dinner.getTotalPrice() * Dinner.getNumberOfGuests());
         return Dinner.getTotalPrice() * Dinner.getNumberOfGuests();
     }
 });

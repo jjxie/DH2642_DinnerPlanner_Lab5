@@ -2,12 +2,10 @@
 <!-- banner of dinner facts and go back portal on the top -->
 <div id="dinnerFactsBannerView" class="panel-body" style="background-color:rgba(255,255,255,0.8);">
 	<div class="col-md-9 panel-body" style="font-size: xx-large;">
-		<span>My Dinner: </span>
-		<span id = "guestNumberOutput"></span>
-		<span> people</span>
+		<span>My Dinner: {{getNumberOfGuests()}} people</span>
 	</div>
 	<div class="col-md-3 panel-body" style="text-align: right;">
-		<a id="editDinnerButton" href="#/search" class="btn btn-warning">Go back and edit dinner</a>
+		<a id="editDinnerButton" href="#!/search" class="btn btn-warning">Go back and edit dinner</a>
 	</div>
 	<div class="col-md-12">
 		<hr style="border: 1px solid #aaa;">
