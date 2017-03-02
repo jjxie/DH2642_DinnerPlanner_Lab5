@@ -14,7 +14,7 @@
 	</div>
 	<div id="searchPanel">
 		<form class="col-md-4 panel-body" name="filterField" ng-submit="filterField.$valid && setFilter(input)" >
-			<input type="text" placeholder="Enter key words to search" ng-model="search.filter">
+			<input class="form-control" type="text" placeholder="Enter key words to search" ng-model="search.filter">
 		</form>
 
 		<div class="col-md-4 panel-body">
@@ -23,7 +23,7 @@
 	</div>
 	<div class="col-md-4 panel-body">
 
-		<select ng-model="search.type"  name="typeField">
+		<select ng-model="search.type"  name="typeField" class="form-control" ng-change="searchDish(search.filter, search.type)">
 			<option ng-repeat="t in types" value="{{t.id}}">
 				{{t.name}}
 			</option>
@@ -32,8 +32,8 @@
 	<div  class="row" style="overflow: auto; max-height: 625px; width: 100%;">
 		<!-- Where the search results locates. -->
 		<div ng-repeat="dish in dishes" class="col-md-4 panel-body">
-			<button class="panel">
-				<a ng-href="#/details/{{dish.id}}" >
+			<!-- <button class="panel"> -->
+				<a ng-href="#!/details/{{dish.id}}" class="btn btn-default">
 					<div class="panel-body">
 						<img ng-src="https://spoonacular.com/recipeImages/{{dish.image}}"
 						alt="{{dish.title}}"
@@ -47,7 +47,7 @@
 						{{dish.readyInMinutes}} mins
 					</div>
 				</a>
-			</button>
+			<!-- </button> -->
 		</div>
 	</div>
 </div>

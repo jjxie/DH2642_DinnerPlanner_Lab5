@@ -7,5 +7,7 @@ dinnerPlannerApp.controller('OverviewCtrl', function ($scope,Dinner) {
 
     $scope.selectedMenu = Dinner.getSelectedMenu();
     $scope.numberOfGuests = Dinner.getNumberOfGuests();
-    $scope.totalCost = Dinner.getTotalPrice() * Dinner.getNumberOfGuests();
+    $scope.getTotalCost = function(){
+        return Dinner.getTotalPrice() * Dinner.getNumberOfGuests();
+    }
 });

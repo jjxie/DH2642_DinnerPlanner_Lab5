@@ -20,7 +20,7 @@ this with Total price of the menu -->
 					<span class="glyphicon glyphicon-minus"></span>
 				</button>
 			</span>
-			<input id="guestNumberInput" type="number" type="number" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)" class="form-control input-number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+			<input id="guestNumberInput" ng-model="numberOfGuests" ng-change="setNumberOfGuest(numberOfGuests)" class="form-control input-number" onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
 			<span class="input-group-btn">
 				<button id="plusGuestButton" type="button" class="btn btn-warning btn-number" ng-click="plusNumberOfGuests()">
 					<span class="glyphicon glyphicon-plus"></span>
@@ -72,6 +72,6 @@ this with Total price of the menu -->
 	</div>
 	<div class="container-fluid">
 		<!-- Button here to confirm the dinner menu. -->
-		<a id="confirmDinnerButton" href="#/overview" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</a>
+		<a id="confirmDinnerButton" href="#!/overview" type="button" class="btn btn-warning btn-md col-md-12">Confirm Dinner</a>
 	</div>
 </div>

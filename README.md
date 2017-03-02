@@ -10,5 +10,4 @@ Authors:
 	Jingjing XIE (jxi@kth.se)
 
 Problems:
-	Number is not updating if using buttons to change, in list view.
-	Numbers after dot are not fixed yet.
+	Why the order of code matters in Javascript (earlier it does not matter?)
